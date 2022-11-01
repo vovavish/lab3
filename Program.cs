@@ -6,32 +6,13 @@ namespace HTMLInformer;
 internal class Program
 {
     private static HTMLInformer _htmlInformer = new HTMLInformer();
+    private static List<string> _matchesList;
 
     static void Main(string[] args)
     {
         ProcessArgs(args);
 
-        List<string> matchesList = null;
-
-        switch (args[0].ToLower())
-        {
-            case "anchors":
-                matchesList = _htmlInformer.GetAllAnchors();
-                break;
-            case "ref":
-                matchesList = _htmlInformer.GetAllReferences();
-                break;
-            case "emails":
-                matchesList = _htmlInformer.GetAllEmails();
-                break;
-        }
-
-        if (matchesList is null)
-        {
-            Console.WriteLine("Unknown command. Try again.");
-        }    
-
-        foreach (var match in matchesList)
+        foreach (var match in _matchesList)
         {
             Console.WriteLine(match);
         }
@@ -68,6 +49,26 @@ internal class Program
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        _matchesList = null;
+
+        switch (args[0].ToLower())
+        {
+            case "anchors":
+                _matchesList = _htmlInformer.GetAllAnchors();
+                break;
+            case "ref":
+                _matchesList = _htmlInformer.GetAllReferences();
+                break;
+            case "emails":
+                _matchesList = _htmlInformer.GetAllEmails();
+                break;
+        }
+
+        if (_matchesList is null)
+        {
+            Console.WriteLine("Unknown command. Try again.");
         }
     }
 }
