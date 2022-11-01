@@ -25,7 +25,6 @@ internal class Program
             Console.WriteLine("ref");
             Console.WriteLine("anchors");
             Console.WriteLine("emails");
-
             Environment.Exit(-1);
         }
         if (args.Length == 1 || args.Length > 2)
