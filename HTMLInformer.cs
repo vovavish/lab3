@@ -25,7 +25,9 @@ class HTMLInformer
 
     public List<string> GetAllAnchors()
     {
-        return (from m in Regex.Matches(HTML, @"<a[^>]*>[^<]*</a>") select m.Value).ToList();
+        return (from m in Regex.Matches(HTML, @"<a[^>]*>[^<]*</a>")
+                select m.Value)
+                .ToList();
     }
 
     public List<string> GetAllReferences()
