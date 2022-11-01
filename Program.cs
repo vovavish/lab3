@@ -49,8 +49,6 @@ internal class Program
             }
         }
 
-        _matchesList = null;
-
         switch (args[0].ToLower())
         {
             case "anchors":
@@ -61,6 +59,9 @@ internal class Program
                 break;
             case "emails":
                 _matchesList = _htmlInformer.GetAllEmails();
+                break;
+            default:
+                _matchesList = null;
                 break;
         }
 
